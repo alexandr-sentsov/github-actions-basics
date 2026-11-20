@@ -5,8 +5,8 @@ jobs:
   test-secret:
     runs-on: ubuntu-latest
 
-   steps:
-     - name: Try to print secret
-       env:
-         MY_PASS: ${{ secrets.DB_PASSWORD }}
-       run: echo "The password in $MY_PASS"
+    steps:
+      - name: Try to print secret
+        env:
+          MY_PASS: ${{ secrets.DB_PASSWORD }}
+        run: echo "The password in $MY_PASS"
