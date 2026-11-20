@@ -1,0 +1,10 @@
+name: Deply to PROD
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploying
+        run: echo "Start deployment..."
