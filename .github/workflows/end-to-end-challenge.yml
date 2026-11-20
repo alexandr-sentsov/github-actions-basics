@@ -1,0 +1,15 @@
+name: End-to-End-Challenge
+on: push
+
+jobs:
+  ci:
+    run-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install node.js
+        uses: actions/settup-node@v7
+        with:
+          node-version: "24"
+      - run: npm install
+      - run: npm test
