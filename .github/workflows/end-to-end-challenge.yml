@@ -13,3 +13,29 @@ jobs:
           node-version: "24"
       - run: npm install
       - run: npm test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: ci
+    permissions:
+      packages: write
+
+    steps:
+      - uses: docker/login-action@v7
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v7
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/${{ github.repository }}/app:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - echo "Deploying application..."
+      - echo "Restart service..."
