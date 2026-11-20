@@ -37,5 +37,5 @@ jobs:
     needs: build
 
     steps:
-      - echo "Deploying application..."
-      - echo "Restart service..."
+      - run: echo "Deploying application..."
+      - run: echo "Restart service..."
